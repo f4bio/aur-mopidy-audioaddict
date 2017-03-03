@@ -1,10 +1,10 @@
 # Maintainer: Gabriel Jülke <pyriand3r at gmail dot com>
 
-_pkgname=mopidy-audioaddict-git
-pkgname=${_pkgname}-git
+pkgname=mopidy-audioaddict
 pkgver=1.0.0.r0.g07487f8
 pkgrel=1
 pkgdesc="Mopidy extension for playing music using the audioaddict service"
+_pkgname=mopidy-audioaddict-git
 arch=('any')
 url="https://github.com/nilicule/mopidy-audioaddict"
 license=('APACHE')
@@ -19,7 +19,7 @@ options=(!emptydirs)
 source=("${_pkgname}::git+https://github.com/nilicule/mopidy-audioaddict.git")
 md5sums=('SKIP')
 
-pkgver() {
+prepare() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
